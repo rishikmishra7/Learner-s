@@ -1,45 +1,39 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
-// import About from './components/About'; 
 import Navbar from './components/Navbar';
+import TextForm from './components/TextForm';
 import Alert from './components/Alert';
 
-import TextForm from './components/TextForm';
-
 function App() {
-  const [mode, setMode] = useState('light'); // To check whether dark mode is enabled or not
-   const[alert,setAlert]=useState(null);
-   const showAlert =(message,type)=>{
-    setAlert(
-      {
-        msg : message,
-        type: type
-      }
-    )
-    setTimeout(() => {
-      setAlert(null);
-    }, 1000);
-   }
+  const [mode, setMode] = useState('light'); // Default mode
+  const [alert, setAlert] = useState(null);
 
-  const toggleMode = () => {
-    if (mode === 'light') {
+  const showAlert = (message, type) => {
+    setAlert({ msg: message, type: type });
+    setTimeout(() => {
+      setAlert(null); // Clear alert after 3 seconds
+    }, 2000);
+  };
+
+  const toggleMode = (newMode) => {
+    if (newMode === 'dark') {
       setMode('dark');
-      document.body.style.backgroundColor = 'grey'; // Dark mode background color
-      showAlert("Dark mode is enabled" ,"success")
+      document.body.style.backgroundColor = 'grey';
+      showAlert('Dark mode has been enabled', 'success');
+
     } else {
       setMode('light');
-      document.body.style.backgroundColor = 'white'; // Light mode background color
-      showAlert("Light mode is enabled" ,"success")
+      document.body.style.backgroundColor = 'white';
+      showAlert('Light mode has been enabled', 'success');
     }
   };
 
   return (
     <>
-      <Navbar title="TextUtils" aboutText="About" mode={mode} toggleMode={toggleMode} />
-
-    <Alert Alert={alert}/>
-      <div className="container my-3">
-        <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} />
+      <Navbar title="textUtils" mode={mode} toggleMode={toggleMode} />
+      <Alert alert={alert} />
+      <div className="container">
+        <TextForm showAlert={showAlert} heading="Enter the text below to analyze" mode={mode} />
       </div>
     </>
   );
