@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/Learner-s/static/css/main.f5c8541d.chunk.css",
+    "main.js": "/Learner-s/static/js/main.3d7d9390.chunk.js",
+    "main.js.map": "/Learner-s/static/js/main.3d7d9390.chunk.js.map",
+    "runtime~main.js": "/Learner-s/static/js/runtime~main.1753161e.js",
+    "runtime~main.js.map": "/Learner-s/static/js/runtime~main.1753161e.js.map",
+    "static/css/2.dbb74888.chunk.css": "/Learner-s/static/css/2.dbb74888.chunk.css",
+    "static/js/2.e873c349.chunk.js": "/Learner-s/static/js/2.e873c349.chunk.js",
+    "static/js/2.e873c349.chunk.js.map": "/Learner-s/static/js/2.e873c349.chunk.js.map",
+    "static/js/3.4f783215.chunk.js": "/Learner-s/static/js/3.4f783215.chunk.js",
+    "static/js/3.4f783215.chunk.js.map": "/Learner-s/static/js/3.4f783215.chunk.js.map",
+    "index.html": "/Learner-s/index.html",
+    "precache-manifest.d28462835cd55bc2115dad7ca107e4e0.js": "/Learner-s/precache-manifest.d28462835cd55bc2115dad7ca107e4e0.js",
+    "service-worker.js": "/Learner-s/service-worker.js",
+    "static/css/2.dbb74888.chunk.css.map": "/Learner-s/static/css/2.dbb74888.chunk.css.map",
+    "static/css/main.f5c8541d.chunk.css.map": "/Learner-s/static/css/main.f5c8541d.chunk.css.map"
+  }
+}
