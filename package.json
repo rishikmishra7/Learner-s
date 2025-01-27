@@ -1,17 +1,19 @@
 {
-  "homepage": "https://rishikmishra7.github.io/Learner-s",
+  "homepage": "http://192.168.1.89:3001",
+
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "bootstrap": "^5.3.3",
     "cra-template": "1.2.0",
-    "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^5.3.4",
     "react-scripts": "^3.0.1",
     "web-vitals": "^4.2.4"
+    
   },
+
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
@@ -37,5 +39,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  },
+
+  "babel": {
+  "presets": ["@babel/preset-react"]
+}
+
 }
