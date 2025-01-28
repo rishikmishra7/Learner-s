@@ -4,32 +4,21 @@ import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
 import About from './components/About';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
-  const [mode, setMode] = useState('light'); // Fixed syntax error
+  const [mode, setMode] = useState('light');
   const [alert, setAlert] = useState(null);
 
   const showAlert = (message, type) => {
     setAlert({ msg: message, type: type });
-    setTimeout(() => {
-      setAlert(null);   
-    }, 2000);
+    setTimeout(() => setAlert(null), 2000);
   };
 
-  const toggleMode = (newMode) => {
-    console.log(`Switching to ${newMode} mode`); // Debugging
-    if (newMode === 'dark') {
-      setMode('dark');
-      document.body.style.backgroundColor = 'grey';
-      showAlert('Dark mode has been enabled', 'success');
-      document.title = "TextUtils - Dark Mode";
-    } else {
-      setMode('light');
-      document.body.style.backgroundColor = 'white';
-      showAlert('Light mode has been enabled', 'success');
-      document.title = 'TextUtils - Light Mode';
-    }
+  const toggleMode = (mode) => {
+    setMode(mode);
+    document.body.style.backgroundColor = mode === 'dark' ? 'grey' : 'white';
+    showAlert(`${mode.charAt(0).toUpperCase() + mode.slice(1)} mode enabled`, 'success');
   };
 
   return (
@@ -38,17 +27,10 @@ function App() {
       <Alert alert={alert} />
       <div className="container my-3">
         <Switch>
-          <Route path="/about" exact component={About} />
-          <Route 
-            path="/" 
-            exact 
-            component={() => 
-              <TextForm 
-                showAlert={showAlert} 
-                heading="Enter the text below to analyze" 
-                mode={mode} 
-              />
-            } 
+          <Route path="/about" component={About} />
+          <Route
+            path="/"
+            render={() => <TextForm heading="Enter text to analyze" mode={mode} showAlert={showAlert} />}
           />
         </Switch>
       </div>
