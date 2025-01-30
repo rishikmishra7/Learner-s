@@ -17,7 +17,7 @@ function App() {
 
   const toggleMode = (mode) => {
     setMode(mode);
-    document.body.style.backgroundColor = mode === 'dark' ? 'grey' : 'white';
+    document.body.style.backgroundColor = mode === 'dark' ? '#2c2c2c' : 'white';
     showAlert(`${mode.charAt(0).toUpperCase() + mode.slice(1)} mode enabled`, 'success');
   };
 
@@ -27,14 +27,15 @@ function App() {
       <Alert alert={alert} />
       <div className="container my-3">
         <Switch>
-          <Route path="/about" component={About} />
-          <Route
-            path="/"
-            render={() => <TextForm heading="Enter text to analyze" mode={mode} showAlert={showAlert} />}
-          />
+          <Route path="/about">
+            <About mode={mode} />
+          </Route>
+          <Route path="/">
+            <TextForm heading="Enter text to analyze" mode={mode} showAlert={showAlert} />
+          </Route>
         </Switch>
       </div>
-    </Router>
+    </Router>   
   );
 }
 

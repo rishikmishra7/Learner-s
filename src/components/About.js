@@ -1,28 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react';
 
-export default function About() {
-  const [mystyle, setMyStyle] = useState({
-    color: 'black',
-    backgroundColor: 'white'
-  });
-
-  const [btntext, setBtnText] = useState("Enable Dark Mode");
-
-  const toggleStyle = () => {
-    if (mystyle.color === 'black') {
-      setMyStyle({
-        color: 'white',
-        backgroundColor: 'black',
-        border: '1px solid white'
-      });
-      setBtnText("Enable Light Mode");
-    } else {
-      setMyStyle({
-        color: 'black',
-        backgroundColor: 'white'
-      });
-      setBtnText("Enable Dark Mode");
-    }
+export default function About({ mode }) {
+  const mystyle = {
+    color: mode === 'dark' ? 'white' : 'black',
+    backgroundColor: mode === 'dark' ? '#2c2c2c' : 'white',
+    border: mode === 'dark' ? '1px solid white' : '1px solid black',
   };
 
   return (
@@ -31,12 +13,12 @@ export default function About() {
       <div className="accordion-item" style={mystyle}>
         <h2 className="accordion-header">
           <button className="accordion-button" type="button" style={mystyle} data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne">
-            Accordion Item #1
+            About Rishik Mishra
           </button>
         </h2>
         <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show">
           <div className="accordion-body">
-            <strong>This is the first item's accordion body.</strong> It is shown by default until the collapse plugin adds the appropriate classes. These classes control the appearance and hiding via CSS transitions.
+            <strong>He is learning React JS.</strong> He is initially a backend developer but now he is moving to Fullstack.
           </div>
         </div>
       </div>
@@ -63,9 +45,6 @@ export default function About() {
             <strong>This is the third item's accordion body.</strong> It is hidden by default and controlled via CSS transitions.
           </div>
         </div>
-      </div>
-      <div className="container my-3"> 
-        <button className="btn btn-primary" onClick={toggleStyle}>{btntext}</button>
       </div>
     </div>
   );

@@ -1,35 +1,38 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-export default function Navbar(props) {
+export default function Navbar({ title, aboutText, mode, toggleMode }) {
   return (
-    <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
+    <nav className={`navbar navbar-expand-lg navbar-${mode} bg-${mode}`}>
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">{props.title}</Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <a className="navbar-brand" href="/">{title}</a>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+              <a className="nav-link" href="/">Home</a>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/about">{props.aboutText}</Link>
+              <a className="nav-link" href="/about">{aboutText}</a>
             </li>
           </ul>
-          <div className="d-flex">
-            <button className="btn btn-sm btn-dark mx-1" onClick={() => props.toggleMode('dark')}>Dark Mode</button>
-            <button className="btn btn-sm btn-light mx-1" onClick={() => props.toggleMode('light')}>Light Mode</button>
-          </div>
+        </div>
+        {/* ✅ Fix: Apply text color dynamically based on mode */}
+        <div className="form-check form-switch">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            id="darkModeSwitch"
+            onChange={() => toggleMode(mode === 'light' ? 'dark' : 'light')}
+            checked={mode === 'dark'}
+          />
+          <label 
+            className={`form-check-label ${mode === 'dark' ? 'text-light' : 'text-dark'}`} 
+            htmlFor="darkModeSwitch"
+          >
+            {mode === 'light' ? 'Enable Dark Mode' : 'Enable Light Mode'}
+          </label>
         </div>
       </div>
     </nav>
