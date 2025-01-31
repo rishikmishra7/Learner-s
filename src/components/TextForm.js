@@ -27,6 +27,28 @@ export default function TextForm(props) {
     props.showAlert('Extra spaces removed', 'success');
   };
 
+  // Alternate Case (first character uppercase, second lowercase, etc.)
+  const handleAlternateCase = () => {
+    let newText = '';
+    for (let i = 0; i < text.length; i++) {
+      newText += i % 2 === 0 ? text[i].toUpperCase() : text[i].toLowerCase();
+    }
+    setText(newText);
+    props.showAlert('Alternated character case', 'success');
+  };
+
+  // Copy to Clipboard
+  const handleCopyToClipboard = () => {
+    navigator.clipboard.writeText(text);
+    props.showAlert('Text copied to clipboard', 'success');
+  };
+
+  // Reverse Text
+  const handleReverseText = () => {
+    setText(text.split('').reverse().join(''));
+    props.showAlert('Text reversed', 'success');
+  };
+
   // Handle Textarea Change
   const handleOnChange = (event) => {
     setText(event.target.value);
@@ -50,6 +72,9 @@ export default function TextForm(props) {
       ></textarea>
       <button className="btn btn-primary mx-1" onClick={handleUpClick} disabled={!text}>Uppercase</button>
       <button className="btn btn-primary mx-1" onClick={handleLoClick} disabled={!text}>Lowercase</button>
+      <button className="btn btn-primary mx-1" onClick={handleAlternateCase} disabled={!text}>Alternate Case</button>
+      <button className="btn btn-primary mx-1" onClick={handleReverseText} disabled={!text}>Reverse Text</button>
+      <button className="btn btn-primary mx-1" onClick={handleCopyToClipboard} disabled={!text}>Copy to Clipboard</button>
       <button className="btn btn-danger mx-1" onClick={handleClearText} disabled={!text}>Clear</button>
       <button className="btn btn-warning mx-1" onClick={handleRemoveSpaces} disabled={!text}>Remove Spaces</button>
       <div className="my-3">
