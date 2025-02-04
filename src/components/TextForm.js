@@ -49,6 +49,15 @@ export default function TextForm(props) {
     props.showAlert('Text reversed', 'success');
   };
 
+  // Capitalize First Letter of Each Word
+  const handleCapitalizeFirstLetter = () => {
+    const newText = text.split(' ').map(word => {
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }).join(' ');
+    setText(newText);
+    props.showAlert('First letter of each word capitalized', 'success');
+  };
+
   // Handle Textarea Change
   const handleOnChange = (event) => {
     setText(event.target.value);
@@ -61,7 +70,7 @@ export default function TextForm(props) {
   };
 
   return (
-    <div className="container" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
+    <div className="container mx-2" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
       <h1>{props.heading}</h1>
       <textarea
         className="form-control"
@@ -75,8 +84,9 @@ export default function TextForm(props) {
       <button className="btn btn-primary mx-1" onClick={handleAlternateCase} disabled={!text}>Alternate Case</button>
       <button className="btn btn-primary mx-1" onClick={handleReverseText} disabled={!text}>Reverse Text</button>
       <button className="btn btn-primary mx-1" onClick={handleCopyToClipboard} disabled={!text}>Copy to Clipboard</button>
+      <button className="btn btn-primary mx-1" onClick={handleCapitalizeFirstLetter} disabled={!text}>Capitalize First Letter</button>
+      <button className="btn btn-primary mx-1" onClick={handleRemoveSpaces} disabled={!text}>Remove Spaces</button>
       <button className="btn btn-danger mx-1" onClick={handleClearText} disabled={!text}>Clear</button>
-      <button className="btn btn-warning mx-1" onClick={handleRemoveSpaces} disabled={!text}>Remove Spaces</button>
       <div className="my-3">
         <h2>Text Summary</h2>
         <p>{text.split(/\s+/).filter((word) => word.length !== 0).length} words and {text.length} characters</p>
